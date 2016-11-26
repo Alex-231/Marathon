@@ -12,13 +12,17 @@ using System.Windows.Forms;
 
 namespace Marathon
 {
+    //This class is really dumb.
+    //For some reason I kept repeating code.
+    //This thing has already been refactored a lot too,
+    //I don't want to imagine how it used to be...
     public partial class Shortcuts : Form
     {
         public Shortcuts()
         {
             InitializeComponent();
 
-            #region StreamReader
+            #region Settings StreamReader
             string SettingsFileLocation = ((System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\u005C")) + "\u005CResources\u005CSettings.txt"));
 
             //Reads settings
@@ -37,71 +41,35 @@ namespace Marathon
 
             #region ButtonEnablers
 
-            #region PluginsButtonEnabler
             if (!Directory.Exists(ServerDir + @"\plugins"))
-            {
                 PluginsButton.Enabled = false;
-            }
             else
-            {
                 PluginsButton.Enabled = true;
-            }
-            #endregion
 
-            #region PropertiesButtonEnabler
             if (!File.Exists(ServerDir + @"\server.properties"))
-            {
                 PropertiesButton.Enabled = false;
-            }
             else
-            {
                 PropertiesButton.Enabled = true;
-            }
-            #endregion
 
-            #region FolderButtonEnabler
             if (!Directory.Exists(ServerDir))
-            {
                 FolderButton.Enabled = false;
-            }
             else
-            {
                 FolderButton.Enabled = true;
-            }
-            #endregion
 
-            #region MarathonButtonEnabler
             if (!Directory.Exists(MarathonDir))
-            {
                 MarathonButton.Enabled = false;
-            }
             else
-            {
                 MarathonButton.Enabled = true;
-            }
-            #endregion
 
-            #region LogButtonEnabler
             if (!Directory.Exists(ServerDir + @"\logs"))
-            {
                 LogButton.Enabled = false;
-            }
             else
-            {
                 LogButton.Enabled = true;
-            }
-            #endregion
 
-            #region BackupsButtonEnabler
             if (!Directory.Exists(MarathonDir + @"\Backups"))
-            {
                 BackupsButton.Enabled = false;
-            }
             else
-            {
                 BackupsButton.Enabled = true;
-            }
-            #endregion
 
             #endregion
         }

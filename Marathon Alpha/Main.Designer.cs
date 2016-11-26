@@ -76,7 +76,7 @@
             this.ServerConsole.ShowDiagnostics = true;
             this.ServerConsole.Size = new System.Drawing.Size(608, 390);
             this.ServerConsole.TabIndex = 4;
-            this.ServerConsole.OnConsoleOutput += new ConsoleControl.ConsoleEventHandler(this.ServerConsole_OnConsoleOutput);
+            //this.ServerConsole.OnConsoleOutput += new ConsoleControl.ConsoleEventHandler(this.ServerConsole_OnConsoleOutput);
             // 
             // ConsoleInButton
             // 

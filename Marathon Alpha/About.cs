@@ -12,15 +12,23 @@ namespace Marathon
 {
     partial class About : Form
     {
-        public string MarathonVersion = "V0.06_2";
-
         public About()
         {
             InitializeComponent();
 
-            StreamReader sr = new StreamReader((System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\u005C")) + "\u005CChangelog.txt"));
-            string Changelog = sr.ReadToEnd();
-            this.textBoxDescription.Text = Changelog;
+            //This should be moved to a resource.
+            string changelogPath = "Changelog.txt";
+            try
+            {
+                //Try to write the changelog to the text box.
+                StreamReader sr = new StreamReader(changelogPath);
+                textBoxDescription.Text = sr.ReadToEnd();
+            }
+            catch(Exception)
+            {
+                //If anything goes wrong, like the file can't be found, just hide the text box.
+                textBoxDescription.Hide();
+            }
         }
 
         #region Assembly Attribute Accessors
@@ -101,10 +109,5 @@ namespace Marathon
             }
         }
         #endregion
-
-        private void labelCopyright_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Marathon;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 
@@ -16,10 +9,12 @@ namespace Marathon
 {
     public partial class Settings : Form
     {
-        public string MarathonVersion = "V0.06_2";
-        public string SettingsFileLocation = ((System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\u005C")) + "\u005CResources\u005CSettings.txt"));
-        public string SettingsTemplateLocation = ((System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\u005C")) + "\u005CResources\u005CSettingsTemplate.txt"));
+        //Refactor these.
+        public const string SettingsFileLocation = "\\Resources\\Settings.txt";
+        public const string SettingsTemplateLocation = "\\Resources\\SettingsTemplate.txt";
 
+        //There's a lot of form setup in this constructor.
+        //I can probably organize this better.
         public Settings()
         {
             InitializeComponent();
@@ -38,17 +33,16 @@ namespace Marathon
                 string DedicatedRamRaw = lines[6];
                 string DefaultJarRaw = lines[9];
 
-                if(String.IsNullOrEmpty(DefaultJarRaw))
-                {
+                //I should probably be using a property.
+                if(string.IsNullOrEmpty(DefaultJarRaw))
                     VanillaJarBox.Checked = false;
-                }
                 else
                 {
                     bool DefaultJar = Convert.ToBoolean(DefaultJarRaw);
                     VanillaJarBox.Checked = DefaultJar;
                 }
 
-                if(String.IsNullOrEmpty(DedicatedRamRaw))
+                if(string.IsNullOrEmpty(DedicatedRamRaw))
                 {
                     RamBox.Text = "";
                     RamUnitBox.Text = "";
@@ -60,19 +54,17 @@ namespace Marathon
                     RamBox.Text = DedicatedRam;
                     RamUnitBox.Text = DedicatedRamUnit;
                 }
-                if(String.IsNullOrEmpty(ServerJarPath))
-                {
+
+                if(string.IsNullOrEmpty(ServerJarPath))
                     JarPathBox.Text = "";
-                }
                 else
-                {
                     JarPathBox.Text = ServerJarPath;
-                }
             }
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            //Fix the templates...
             using (StreamWriter writer =
             new StreamWriter(SettingsFileLocation))
             {
@@ -88,7 +80,7 @@ namespace Marathon
                 writer.WriteLine(VanillaJarBox.Checked.ToString());
                 writer.WriteLine("");
                 writer.WriteLine("File created at " + DateTime.Now.ToString("h:mm:ss tt") + " on " + DateTime.Now.Date.ToString("dddd dd MMMM, yyyy"));
-                writer.WriteLine(MarathonVersion);
+                //writer.WriteLine(MarathonVersion);
             }
             Process.Start((System.Reflection.Assembly.GetEntryAssembly().Location.Remove(System.Reflection.Assembly.GetEntryAssembly().Location.LastIndexOf("\u005C")) + "\u005CMarathon.exe"));
             Environment.Exit(0);
@@ -96,9 +88,11 @@ namespace Marathon
         private void OpenButton_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialogJarPath.ShowDialog();
-            if(result == DialogResult.OK)
-            {
-            }
+            //Not sure why I made this.
+            //if(result == DialogResult.OK)
+            //{
+            //}
+            //Property this?
             JarPathBox.Text = openFileDialogJarPath.FileName;
         }
 
@@ -107,6 +101,7 @@ namespace Marathon
             var result1 = MessageBox.Show("Are you sure you want a new settings file?" + Environment.NewLine + "The old one will be deleted.", "Marathon Settings", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if(result1 == DialogResult.OK)
             {
+                //Template....
                 using (StreamWriter writer =
                 new StreamWriter(SettingsFileLocation))
                 {
@@ -122,14 +117,14 @@ namespace Marathon
                     writer.WriteLine("");
                     writer.WriteLine("");
                     writer.WriteLine("File created at " + DateTime.Now.ToString("h:mm:ss tt") + " on " + DateTime.Now.Date.ToString("dddd dd MMMM, yyyy"));
-                    writer.WriteLine(MarathonVersion);
+                    //writer.WriteLine(MarathonVersion);
                 }
             }
         }
 
         private void SettingsClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

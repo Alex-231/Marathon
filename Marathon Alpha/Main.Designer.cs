@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ServerConsole = new ConsoleControl.ConsoleControl();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            this.ServerConsole = new ConsoleControl.ConsoleControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ConsoleInButton = new System.Windows.Forms.Button();
             this.ConsoleInBox = new System.Windows.Forms.TextBox();
@@ -51,6 +51,20 @@
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
+            // ServerConsole
+            // 
+            this.ServerConsole.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.ServerConsole.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ServerConsole.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ServerConsole.IsInputEnabled = false;
+            this.ServerConsole.Location = new System.Drawing.Point(6, 14);
+            this.ServerConsole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ServerConsole.Name = "ServerConsole";
+            this.ServerConsole.SendKeyboardCommandsToProcess = false;
+            this.ServerConsole.ShowDiagnostics = true;
+            this.ServerConsole.Size = new System.Drawing.Size(608, 390);
+            this.ServerConsole.TabIndex = 4;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ServerConsole);
@@ -62,21 +76,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Console";
-            // 
-            // ServerConsole
-            // 
-            this.ServerConsole.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ServerConsole.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ServerConsole.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ServerConsole.IsInputEnabled = false;
-            this.ServerConsole.Location = new System.Drawing.Point(6, 14);
-            this.ServerConsole.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ServerConsole.Name = "ServerConsole";
-            this.ServerConsole.SendKeyboardCommandsToProcess = false;
-            this.ServerConsole.ShowDiagnostics = true;
-            this.ServerConsole.Size = new System.Drawing.Size(608, 390);
-            this.ServerConsole.TabIndex = 4;
-            //this.ServerConsole.OnConsoleOutput += new ConsoleControl.ConsoleEventHandler(this.ServerConsole_OnConsoleOutput);
             // 
             // ConsoleInButton
             // 

@@ -1,6 +1,6 @@
 ﻿namespace Marathon
 {
-    partial class Settings
+    partial class SettingsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.JarPathBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.OpenButton = new System.Windows.Forms.Button();
@@ -118,7 +118,7 @@
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(82, 23);
             this.SaveButton.TabIndex = 10;
-            this.SaveButton.Text = "Save and Exit";
+            this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
@@ -152,7 +152,7 @@
             this.VanillaJarBox.Text = "Vanilla Jar?";
             this.VanillaJarBox.UseVisualStyleBackColor = true;
             // 
-            // Settings
+            // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +170,7 @@
             this.Controls.Add(this.JarPathBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Settings";
+            this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Marathon Settings";
             this.ResumeLayout(false);
